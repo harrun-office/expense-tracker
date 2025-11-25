@@ -1,7 +1,7 @@
 # Netlify config — build from repo root, publish the dist folder
 [build]
-  base = ""        # empty = repo root
-  publish = "dist"
+  base = "client"
+  publish = "client/dist"
   command = "npm run build"
 
 [context.production.environment]
