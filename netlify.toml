@@ -1,17 +1,14 @@
-# netlify.toml
 [build]
-base = "frontend" # run builds from frontend/
-command = "npm ci && npm run build"
-publish = "dist" # relative to base -> frontend/dist
-functions = "netlify/functions"
-
+  base = "client"
+  publish = "dist"
+  command = "npm run build"
 
 [context.production.environment]
-NODE_VERSION = "18"
+  # I recommend setting VITE_API_URL in Netlify UI instead of committing secrets.
+  VITE_API_URL = "https://expense-tracker-uvb7.onrender.com/"
 
-
-# Optional: SPA redirect rule (Netlify will still use _redirects if present in frontend/)
+# SPA catch-all redirect — do NOT force, so static files are served normally
 [[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
+  from = "/*"
+  to = "/index.html"
+  status = 200
