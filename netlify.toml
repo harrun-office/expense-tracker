@@ -1,11 +1,11 @@
+# Netlify config — build from repo root, publish the dist folder
 [build]
-  base = "client"
+  base = ""        # empty = repo root
   publish = "dist"
   command = "npm run build"
 
 [context.production.environment]
-  # I recommend setting VITE_API_URL in Netlify UI instead of committing secrets.
-  VITE_API_URL = "https://expense-tracker-uvb7.onrender.com/"
+  NODE_ENV = "production"
 
 # SPA catch-all redirect — do NOT force, so static files are served normally
 [[redirects]]
