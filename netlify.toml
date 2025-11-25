@@ -1,11 +1,12 @@
 # Netlify config — build from repo root, publish the dist folder
 [build]
   base = "frontend"
-  publish = "frontend/dist"
+  publish = "dist"
   command = "npm run build"
 
 [context.production.environment]
   NODE_ENV = "production"
+  NPM_CONFIG_PRODUCTION = "false"
 
 # SPA catch-all redirect — do NOT force, so static files are served normally
 [[redirects]]
