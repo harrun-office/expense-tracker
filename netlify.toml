@@ -1,8 +1,17 @@
+# netlify.toml
 [build]
-  base    = "client"          # <-- change to your subfolder
-  command = "npm run build"
-  publish = "dist"
-  functions = "netlify/functions"
+base = "frontend" # run builds from frontend/
+command = "npm ci && npm run build"
+publish = "dist" # relative to base -> frontend/dist
+functions = "netlify/functions"
+
 
 [context.production.environment]
-  NODE_VERSION = "18"
+NODE_VERSION = "18"
+
+
+# Optional: SPA redirect rule (Netlify will still use _redirects if present in frontend/)
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
